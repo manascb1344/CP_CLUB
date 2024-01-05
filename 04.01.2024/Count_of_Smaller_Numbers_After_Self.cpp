@@ -2,17 +2,18 @@
 
 class Solution {
 public:
-    int minMoves(vector<int>& nums) {
+    vector<int> countSmaller(vector<int>& nums) {
         int n = nums.size();
-        int minim = INT_MAX;
+        vector<int> counts;
         for(int i = 0; i < n; i++){
-            minim = min(minim, nums[i]);
+            int count = 0;
+            for(int j = i ; j < n ; j++){
+                if(nums[j] < nums[i]){
+                    count++;
+                }
+            }
+            counts[i] = count;
         }
-        int ans = 0;
-        for(int i = 0 ; i < n; i++){
-            ans += nums[i] - minim; 
-        }
-
-        return ans;
+    return counts;
     }
 };
